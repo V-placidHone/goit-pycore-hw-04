@@ -49,20 +49,20 @@ def total_salary(path):
             return
         
         else:
-
+            salary_employes = []
             #iterate through the file and get every line, split it by comma and get the salary, add it to total and count the number of employees
             for ln in fl_name:
-                #print(ln) 
-                empl = ln.split(",")
-                #print(empl)
-                
-                employee_sal = empl[1]
-                #print(employee_sal)
-                
                 count_employes +=1
-                total += int(employee_sal)
+                
+                empl = ln.split(",")
+                salary_employes.append(empl[1])
+                
+                
+                
         
-        print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {int(total/count_employes)}") 
+        total = sum(int(salary) for salary in salary_employes)
+        average = total / count_employes if count_employes > 0 else 0
+        print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {int(average)}") 
     
 
 

@@ -55,26 +55,22 @@ def get_cats_info(path):
         
         else:
             lines = [ln.strip() for ln in fl.readlines()]
-            #print(lines)
+          
 
             indiv_cat_list = []
 
             for cat_line in lines:
+                
                 cat_dict = {}
                 data = cat_line.split(",")
-                #print(data)
+               
                 id, name, age = data
-                #print(f"""
-                #this is id: {id} ,
-                #this is name: {name} , 
-                #this is age {age} ,
-                #done              
-                #      """)
+                
                 
                 cat_dict["id"] = id
                 cat_dict["name"] = name 
                 cat_dict["age"] = age
-                #print(cat_dict)
+                
                 indiv_cat_list.append(cat_dict)
             
             print(indiv_cat_list)
