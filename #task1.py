@@ -43,27 +43,27 @@ def total_salary(path):
 
     #need to parse the file and get every salary + average
     with open(path) as fl_name:
-        #iterate through the file and get every line, split it by comma and get the salary, add it to total and count the number of employees
-        for ln in fl_name:
-            #print(ln) 
-            empl = ln.split(",")
-            #print(empl)
-            
-            employee_sal = empl[1]
-            #print(employee_sal)
-            
-            count_employes +=1
-            total += int(employee_sal)
+        #обробка випадку, коли файл відсутній
+        if not fl_name:
+            print("File not found".upper())
+            return
+        
+        else:
+
+            #iterate through the file and get every line, split it by comma and get the salary, add it to total and count the number of employees
+            for ln in fl_name:
+                #print(ln) 
+                empl = ln.split(",")
+                #print(empl)
+                
+                employee_sal = empl[1]
+                #print(employee_sal)
+                
+                count_employes +=1
+                total += int(employee_sal)
+        
+        print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {int(total/count_employes)}") 
     
-    print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {int(total/count_employes)}") 
-    
-
-
-#print(total)
-#print(total/count_employes)
-
-
-
 
 
 if __name__ == "__main__":

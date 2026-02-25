@@ -1,6 +1,9 @@
 import sys
 from pathlib import Path
-from colorama import init, Fore, Style, Back
+from colorama import init, Fore, Style
+
+colorama.init( autoreset=True)
+
 
 def show(path_obj: Path):
     if not path_obj.is_dir():
@@ -8,25 +11,23 @@ def show(path_obj: Path):
         return
     
     output = ""
+
     #printing first directory name
-    output += f"|{Fore.BLUE} FOLDER: {Fore.RESET} {path_obj.name}\n"
+    output += f"|{Fore.BLUE} FOLDER:  {path_obj.name}\n{Style.RESET_ALL}"
     
 
-
     for item in path_obj.iterdir():
-       
         output += "__"
         if item.is_dir():
-            
+            output += f"|{Fore.BLUE} FOLDER:  {item.name}\n{Style.RESET_ALL}"
             show(item)
-            output += f"|{Fore.BLUE} FOLDER: {Fore.RESET} {item.name}\n"
-
+            
         elif item.is_file():
-            output += f"|{Fore.MAGENTA} FILE: {Fore.RESET} {item.name}\n"
+            output += f"|{Fore.MAGENTA} FILE: {item.name}\n{Style.RESET_ALL}"
             
             
     print(output)
-    pass
+    
 
 
 if __name__ == "__main__":

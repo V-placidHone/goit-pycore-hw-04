@@ -40,30 +40,46 @@ print(cats_info)
     {"id": "60b90c4613067a15887e1ae5", "name": "Tessi", "age": "5"},
 ]"""
 #path = "cats.txt"
-with open(path) as fl:
-    lines = [ln.strip() for ln in fl.readlines()]
-    #print(lines)
 
-    indiv_cat_list = []
 
-    for cat_line in lines:
-        cat_dict = {}
-        data = cat_line.split(",")
-        #print(data)
-        id, name, age = data
-        #print(f"""
-        #this is id: {id} ,
-        #this is name: {name} , 
-        #this is age {age} ,
-        #done              
-        #      """)
-        
-        cat_dict["id"] = id
-        cat_dict["name"] = name 
-        cat_dict["age"] = age
-        #print(cat_dict)
-        indiv_cat_list.append(cat_dict)
+def get_cats_info(path):
+
+
     
-    print(indiv_cat_list)
-         
+    with open(path) as fl:
+
+        #обробка випадку, коли файл відсутній
+        if not fl:
+            print("File not found".upper())
+            return
         
+        else:
+            lines = [ln.strip() for ln in fl.readlines()]
+            #print(lines)
+
+            indiv_cat_list = []
+
+            for cat_line in lines:
+                cat_dict = {}
+                data = cat_line.split(",")
+                #print(data)
+                id, name, age = data
+                #print(f"""
+                #this is id: {id} ,
+                #this is name: {name} , 
+                #this is age {age} ,
+                #done              
+                #      """)
+                
+                cat_dict["id"] = id
+                cat_dict["name"] = name 
+                cat_dict["age"] = age
+                #print(cat_dict)
+                indiv_cat_list.append(cat_dict)
+            
+            print(indiv_cat_list)
+            
+        
+if __name__ == "__main__":
+    path = "cats.txt"
+    get_cats_info(path)
