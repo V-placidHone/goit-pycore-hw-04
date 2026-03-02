@@ -1,3 +1,4 @@
+
 def parse_input(user_input):
 #does work if input is "add John 1234567890" 
 
@@ -5,11 +6,26 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
+#adding new contact
+@input_error
 def add_contact(args, contacts):
     name, phone = args
+
+
+    # phone should contain only digits
+    if not phone.isdigit():
+        raise ValueError("Phone number should contain only digits.")
+    
+
+    # name should contain only letters and hyphens
+    if not name.replace("-", "").isalpha():
+        raise ValueError("Name should contain only letters and hyphens.")
     contacts[name] = phone
     return "Contact added."
 
+
+#edditing existing contact
+@input_error
 def change_input(args, contacts ):
 #does work if input is "add John 1234567890" 
     name, phone = args
@@ -18,6 +34,7 @@ def change_input(args, contacts ):
         return "Contact updated."
     else:
         return "Contact not found."
+
     
 def show_all(contacts):
     if contacts:
